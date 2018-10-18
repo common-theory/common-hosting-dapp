@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf build && rm -f static/index.html",
-    "prebuild": "echo 'prebuild empty'",
+    "prebuild": "true",
     "build": "npm run clean && npm run prebuild && webpack",
     "build:production": "npm run clean && npm run prebuild && webpack --config webpack.prod.js",
     "deploy": "npm run build:production && node scripts/dns-update.js",
