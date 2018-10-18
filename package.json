@@ -3,17 +3,43 @@
   "version": "0.0.1",
   "description": "The web interface for the common hosting contract",
   "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf build && rm -f static/index.html",
+    "prebuild": "echo 'prebuild empty'",
+    "build": "npm run clean && npm run prebuild && webpack",
+    "build:production": "npm run clean && npm run prebuild && webpack --config webpack.prod.js",
+    "deploy": "npm run build:production && node scripts/dns-update.js",
+    "dev": "npm run prebuild && webpack-dev-server --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
-    "mobx-react": "^5.3.2",
     "mobx": "^5.5.1",
+    "mobx-react": "^5.3.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1",
+    "styled-components": "^4.0.2",
     "web3": "^1.0.0-beta.36"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/styled-components": "^4.0.1",
+    "babel-loader": "^8.0.4",
+    "html-webpack-harddisk-plugin": "^1.0.0",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "typescript": "^3.1.3",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
   },
   "author": "Chance Hudson",
   "license": "MIT"
